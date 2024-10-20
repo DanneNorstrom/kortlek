@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="sv">
+	<head>
+	<title></title>
+	<meta charset="utf-8">	
+	</head>
+
+	<body>
+	<div>
+	<button id="butt" >Draw a card</button>
+	</div>
+
+	<div id="outp">
+	</div>
+
+	<script>
+
+	butt.addEventListener("click", getApi)
+
+	function getApi(){ 
+
+	let Uri = "https://deckofcardsapi.com/api/deck/new/draw/?count=1"
+
+	fetch(Uri)
+	.then(res => res.json()) 
+	.then(data => 
+	{ 
+	let im = document.createElement('img')
+	im.setAttribute("src", data.cards[0].image)
+	
+	outp.innerHTML =""
+	outp.appendChild(im)
+
+	}) 
+	.catch(err => console.log(err)) 
+	} 
+
+
+	</script>
+  
+	</body>
+</html>
